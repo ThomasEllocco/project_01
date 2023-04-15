@@ -5,8 +5,11 @@
 # Список my_favorite_songs содержит список названий и длительности каждого трека
 # Выведите общее время звучания трех случайных песен в формате
 # Три песни звучат ХХХ минут
+
+
 import random
-from datetime import datetime
+from datetime import timedelta
+
 
 my_favorite_songs = [
     ['Waste a Moment', 3.03],
@@ -19,9 +22,14 @@ my_favorite_songs = [
     ['Nowhere to Run', 2.58],
     ['In This World', 4.02],
 ]
+
+
 song_1,song_2,song_3 = random.sample(my_favorite_songs,3)
-three_song_time = str(round((song_1[1] + song_2[1] + song_3[1]),2)).replace('.', ':')
-print(f'Три песни звучат {three_song_time} минут')
+three_song_time = round(song_1[1] + song_2[1] + song_3[1], 2)
+total_time = timedelta()
+m, s = str(three_song_time).split(".")
+total_time += timedelta(minutes=int(m), seconds=int(s))
+print(f'Три песни звучат {total_time} минут')
 
 
 
@@ -29,6 +37,7 @@ print(f'Три песни звучат {three_song_time} минут')
 # Есть словарь песен
 # Распечатайте общее время звучания трех случайных песен
 # Вывод: Три песни звучат ХХХ минут.
+
 
 my_favorite_songs_dict = {
     'Waste a Moment': 3.03,
@@ -41,10 +50,15 @@ my_favorite_songs_dict = {
     'Nowhere to Run': 2.58,
     'In This World': 4.02,
 }
-song1,song2,song3 = random.sample(list(my_favorite_songs_dict.items()),3)
-songtime = str(round((song1[1] + song2[1] + song3[1]),2)).replace('.', ':')
-song_time = datetime.strptime(songtime, "%M:%S")
-print(f'Три песни звучат {song_time.minute}:{song_time.second} минут')
+
+
+songs_time = random.sample(list(my_favorite_songs_dict.values()), 3)
+total_time1 = timedelta()
+for _ in songs_time:
+    m, s = str(_).split(".")
+    total_time1 += timedelta(minutes=int(m), seconds=int(s))
+    print(f'Три песни звучат {total_time1} минут')
+
 
 # Дополнительно для пунктов A и B
 # Пункт C.
