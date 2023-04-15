@@ -16,7 +16,7 @@
     # Введите номер месяца: 15
     # Такого месяца нет!
 
-year = {
+day_in_month = {
     "январь": 31,
     "февраль": 28,
     "март": 31,
@@ -47,11 +47,11 @@ mounth_nuber = {
 while True:
     month = input("Введите номер месяца: ")
     if month in mounth_nuber:
-        if mounth_nuber[month] in year:
+        if mounth_nuber[month] in day_in_month:
             if year[mounth_nuber[month]] == 31:
-                print(f"Вы ввели {mounth_nuber[month]}. {year[mounth_nuber[month]]} день")
-            elif year[mounth_nuber[month]] == 30 or year[mounth_nuber[month]] == 28:
-                print(f"Вы ввели {mounth_nuber[month]}. {year[mounth_nuber[month]]} дней")
+                print(f"Вы ввели {mounth_nuber[month]}. {day_in_month[mounth_nuber[month]]} день")
+            elif day_in_month[mounth_nuber[month]] == 30 or day_in_month[mounth_nuber[month]] == 28:
+                print(f"Вы ввели {mounth_nuber[month]}. {day_in_month[mounth_nuber[month]]} дней")
             break
     else:
         print("Такого месяца нет")
