@@ -16,43 +16,20 @@
     # Введите номер месяца: 15
     # Такого месяца нет!
 
-day_in_month = {
-    "январь": 31,
-    "февраль": 28,
-    "март": 31,
-    "апрель": 30,
-    "май": 31,
-    "июнь": 30,
-    "июль": 31,
-    "август": 31,
-    "сентябрь": 30,
-    "октябрь": 31,
-    "ноябрь": 30,
-    "декабрь": 31
-}
-mounth_nuber = {
-    "1": "январь",
-    "2": "февраль",
-    "3": "март",
-    "4": "апрель",
-    "5": "май",
-    "6": "июнь",
-    "7": "июль",
-    "8": "август",
-    "9": "сентябрь",
-    "10": "октябрь",
-    "11": "ноябрь",
-    "12": "декабрь"
-}
+from datetime import datetime
+import calendar
+
+month_num = ("январь", "февраль","март", "апрель", "май", "июнь",
+                "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь")
 while True:
-    month = input("Введите номер месяца: ")
-    if month in mounth_nuber:
-        if mounth_nuber[month] in day_in_month:
-            if year[mounth_nuber[month]] == 31:
-                print(f"Вы ввели {mounth_nuber[month]}. {day_in_month[mounth_nuber[month]]} день")
-            elif day_in_month[mounth_nuber[month]] == 30 or day_in_month[mounth_nuber[month]] == 28:
-                print(f"Вы ввели {mounth_nuber[month]}. {day_in_month[mounth_nuber[month]]} дней")
-            break
+    year = datetime.now().year
+    month = int(input("Введите номер месяца: "))
+    if month > 0 and month < 13:
+        #month_name = calendar.month_name[month]
+        month_name = month_num[month - 1]
+        days = calendar.monthrange(year, month)[1]
+        print(f"Вы ввели {month_name}. {days} дней")
+        break
     else:
-        print("Такого месяца нет")
+        print("Такого месяца нет!")
 
